@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 import StarryNight from './pages/Product/StarryNight.jsx';
 import Doe from './pages/Product/Doe.jsx';
 import AddProduct from './AddProduct.jsx'
+import Wishist from './pages/Wishlist.jsx'
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
         <Route path='/Cart' element={<Cart />} />
         <Route path='/' element={<AllProductPage />} />
         <Route path='/AddProduct' element={<AddProduct />} />
+        <Route path="/Wishlist" element={<Wishist/>}></Route>
         </Routes> 
       </div>
       

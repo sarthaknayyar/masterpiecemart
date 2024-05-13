@@ -6,7 +6,7 @@ import "../ProductPage.css";
 // i want to import cart_prod from cart.js that is inside services folder in src folder
 import { cart_prod } from "../../services/cart";
 import Navbar from "../../components/Navbar";
-import { AddCard, AddCardTwoTone } from "@mui/icons-material";
+import { wishlist_prod } from "../../services/wishlist";
 
 function ProductPage(props) {
   const [cartStatus, setCartStatus] = useState("Add To Cart");
@@ -17,9 +17,9 @@ function ProductPage(props) {
     
     const productId = props.productId; 
     console.log(productId);
-    if(document.querySelector(".addcart").classList.contains("in-cart")){
-        setCartStatus("In Your Cart");
-    }
+    // if(document.querySelector(".addcart").classList.contains("in-cart")){
+    //     setCartStatus("In Your Cart");
+    // }
     fetch(`http://localhost:8080/api/products/${productId}`)
       .then(response => {
         if (!response.ok) {
@@ -34,6 +34,26 @@ function ProductPage(props) {
           setCartStatus("In Your Cart");
         }
         
+        
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+      });
+
+      fetch(`http://localhost:8080/api/wishlist/${productId}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        if(productId===data.productId){
+          document.querySelector(".addToWishlistButton").classList.add("added");
+          setWishlistStatus("In Your Wishlist");
+          document.querySelector(".addToWishlistButton").style.color = "red";
+        }
         
       })
       .catch(error => {
@@ -76,6 +96,7 @@ function ProductPage(props) {
       setWishlistStatus("In Your Wishlist");
       wishlistToastMessage();
       element.style.color = "red";
+      wishlist_prod(prod_list);
     }
   };
   return (
@@ -83,12 +104,12 @@ function ProductPage(props) {
       {/* <header> */}
       <Navbar />
       {/* </header> */}
-      <div className="product-mains ">
-        <div className="product-image" 
+      <div className="product-mains flex ">
+        <div className="product-image w-1/2 flex justify-center items-center h-fit overflow-hidden" 
         >
           <div 
             id="carouselExampleIndicators"
-            class="carousel slide"
+            class="carousel slide flex  "
             data-ride="carousel"
           >
             <ol class="carousel-indicators">
@@ -106,24 +127,24 @@ function ProductPage(props) {
                 data-slide-to="2"
               ></li>
             </ol>
-            <div class="carousel-inner prod-img w-40 h-100 overflow-hidden">
+            <div class="carousel-inner prod-img  h-100 overflow-hidden">
               <div class="carousel-item active  ">
                 <img
-                  class="d-block w-100 overflow-hidden"
+                  class="d-block w-fit overflow-hidden"
                   src={props.productImage}
                   alt="First slide"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  class="d-block w-100"
+                  class="d-block"
                   src="prodimg2 (1).jpg"
                   alt="Second slide"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  class="d-block w-100"
+                  class="d-block "
                   src="prod4 (1).jpg"
                   alt="Third slide"
                 />
@@ -136,7 +157,7 @@ function ProductPage(props) {
               data-slide="prev"
             >
               <span
-                class="carousel-control-prev-icon"
+                class="carousel-control-prev-icon text-black"
                 aria-hidden="true"
               ></span>
               <span class="sr-only">Previous</span>

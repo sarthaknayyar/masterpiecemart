@@ -4,14 +4,16 @@ import "react-toastify/dist/ReactToastify.css";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Navbar from "../components/Navbar";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 function Cart() {
   const [error, setError] = useState(null);
   const [products, setProducts] = useState([]);
 
+//   const flag=0;
+
   useEffect(() => {
-    fetch("http://localhost:8080/api/products")
+    fetch("http://localhost:8080/api/wishlist")
       .then((response) => {
         if (!response.ok && response.status !== 404) {
           throw new Error(
@@ -34,44 +36,17 @@ function Cart() {
       });
   }, []);
 
-  function handleQuantityChange(productId) {
-    setProducts((prevProducts) =>
-      prevProducts.map((product) =>
-        product.productId === productId
-          ? { ...product, quantity: product.quantity + 1 }
-          : product
-      )
-    );
-  }
-  function handleQuantityChangeDec(productId){
-    setProducts((prevProducts) =>
-      prevProducts.map((product) =>
-        product.productId === productId
-          ? { ...product, quantity: Math.max(product.quantity - 1,0) }
-          : product
-      )
-    );
-    if(products.filter((product) => product.productId === productId)[0].quantity === 1){
-      setProducts((prevProducts) =>
-      prevProducts.filter((product) =>
-        product.productId !== productId
-      ) 
-    );
-    deleteProductIfQuantityZero(productId);
-}
-  }
-
-const delivery =products.reduce((acc, product) => acc + product.price * product.quantity, 0)>1000?0:70;
-
+  
+  
   const deleteProductIfQuantityZero = async (productId) => {
-    // Find the product in the products array with the given productId
+
     const productToDelete = products.find((product) => product.productId === productId);
   
     // Check if the product's quantity is zero
-    // if (productToDelete && productToDelete.quantity === 0) {
+    // if (productToDelete) {
       try {
         // Make an API call to delete the product from the database
-        const response = await fetch(`http://localhost:8080/api/products/${productId}`, {
+        const response = await fetch(`http://localhost:8080/api/wishlist/${productId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -79,7 +54,7 @@ const delivery =products.reduce((acc, product) => acc + product.price * product.
         });
   
         if (!response.ok) {
-          throw new Error(response.statusText);
+          throw new Error('Failed to delete the product');
         }
   
         // Update the products state by filtering out the deleted product
@@ -98,14 +73,17 @@ const delivery =products.reduce((acc, product) => acc + product.price * product.
   }
 
   return (
+
     <>
-    {products.length === 0 ?  (
-    <>
-      <Navbar />
-      <div className="flex justify-center items-center text-3xl font-bold h-screen">No items in your cart!</div>
-      </>
-    ) : (
-      <>
+    {products.length ===0 ?  (
+        <>
+        <Navbar />
+        <div className="flex justify-center items-center h-screen text-3xl font-bold">
+            No Items In Your Wishlist!       
+        </div>
+        </>
+    ) :(<>
+    
         <Navbar />
     <div
       style={{
@@ -116,30 +94,30 @@ const delivery =products.reduce((acc, product) => acc + product.price * product.
       }}
     >
       <div className="flex mt-6 mb-20 text-4xl font-bold justify-center">
-        Items in your cart!
+        Your Wishlist!
       </div>
-      <div className="flex  justify-around">
-      <div className="flex flex-col ">
+      <div className="flex  justify-around ">
+      <div className="flex flex-col  ">
       {/* <div className="border-2 border-gray-500 w-full mt-10" /> */}
       {products.map((product) => (
         <div className="flex flex-col ">
-            <div className="flex justify-between  bg-gray-100 border-2 border-gray-300 p-4 shadow-xl rounded-xl text-current hover:no-underline hover:text-current" key={product.productId}>
+            <div className="flex justify-between  bg-gray-100 border-2 border-gray-300 p-4 shadow-xl rounded-xl text-black " key={product.productId}>
           <div className="flex flex-col justify-around h-60 ml-10">
-            <div className="flex justify-center px-1 mt-8 text-xl font-bold">ITEM</div> 
-            <Link to={`/${product.productName}`} className="flex gap-24 text-xl justify-between items-center mt-4 text-current hover:no-underline hover:text-current">
-              <div className="w-48 border-2 border-black">
+            <div className="flex justify-center px-1 mt-8 text-2xl font-bold">ITEM</div>
+            <Link to={`/${product.productName}`} className="flex gap-48 text-xl justify-between items-center mt-4 text-current hover:text-current hover:no-underline">
+              <div className="w-60 border-2 border-black">
                 <img
                   className="border-2 border-black"
                   src={`${product.productImage}`}
                   alt=""
                 />
               </div>
-              <div className="flex-col">
-                <div className="flex justify-center text-2xl font-semi-bold italic w-80">
+              <div className="flex-col leading-10">
+                <div className="flex justify-center text-3xl font-semi-bold italic w-80 leading-10">
                   {product.productName}
                 </div>
-                <div className="flex justify-center">By</div>
-                <div className="flex justify-center text-2xl italic">
+                <div className="flex justify-center text-2xl">By</div>
+                <div className="flex justify-center text-3xl italic">
                   {product.artistName}
                 </div>
               </div>
@@ -147,36 +125,36 @@ const delivery =products.reduce((acc, product) => acc + product.price * product.
           </div>
 
           <div className="flex flex-col justify-around items-center mx-12">
-            <div className="flex justify-center  text-xl font-bold">
+            <div className="flex justify-center  text-2xl font-bold">
               PRICE
             </div>
-            <div className="flex text-2xl ">
+            <div className="flex text-3xl ">
                 Rs. {product.price}
               </div>
           </div>
 
           <div className="flex flex-col justify-around items-center mx-12">
-            <div className="flex justify-center px-1 mt-2  text-xl font-bold">
-              QUANTITY
+            <div className="flex justify-center px-1 mt-2  text-2xl font-bold">
+              REMOVE
             </div>
             <div className="flex text-xl justify-between items-center ">
               <div className="flex justify-center items-center w-48 text-2xl">
-                <div className="flex justify-center items-center w-8 h-8 border-2 border-gray-900">
-                  {product.quantity}
+                <div onClick={()=>deleteProductIfQuantityZero(product.productId)} className="flex justify-center items-center w-12 h-10 border-2 border-gray-900 text-2xl font-bold">
+                  <button className="text-3xl font-bold" >-</button>
                 </div>
-                <div className="flex flex-col ml-2 font-bold">
+                {/* <div className="flex flex-col ml-2 font-bold">
                   <div onClick={() => handleQuantityChange(product.productId)}>
                     <ArrowDropUpIcon />
                   </div>
                   <div onClick={() => handleQuantityChangeDec(product.productId)}>
                     <ArrowDropDownIcon />
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col justify-around items-center mx-12">
+          {/* <div className="flex flex-col justify-around items-center mx-12">
             <div className="flex justify-center px-1  text-xl font-bold">
               SUBTOTAL
             </div>
@@ -185,7 +163,7 @@ const delivery =products.reduce((acc, product) => acc + product.price * product.
                 Rs. {product.price * product.quantity}
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* <hr className="border-2 border-black w-full" /> */}
         </div>
@@ -195,8 +173,7 @@ const delivery =products.reduce((acc, product) => acc + product.price * product.
       ))}
 
       </div>
-      <div className="flex flex-col gap-4 w-1/3 items-center">
-      <div className="flex flex-col w-2/3 p-4 justify-between bg-gray-100 border-2 border-gray-300 shadow-xl rounded-xl h-100">
+      {/* <div className="flex flex-col w-1/3 p-4 justify-between bg-gray-100 border-2 border-gray-300 shadow-xl rounded-xl h-100">
         <div className="flex justify-center items-center text-3xl font-semibold ">ORDER SUMMARY</div>
         <div className="flex justify-around items-center">
         <div class="flex flex-col text-2xl font-bold items-start justify-around h-96">
@@ -217,22 +194,15 @@ const delivery =products.reduce((acc, product) => acc + product.price * product.
 
                 </div>
                 <div>
-                    Rs. {delivery}
+                    Rs. 0
                 </div>
                 <div>
-                    Rs. {products.reduce((acc, product) => acc + product.price * product.quantity, delivery)}
+                    Rs. {products.reduce((acc, product) => acc + product.price * product.quantity, 0)}
                 </div>
             </div>
         </div>
-        
-      </div> 
-
-      <div className="text-2xl ">
-        *Free delivery on orders above Rs. 1000
-      </div>
-     
-      </div>
-
+        <div></div>
+      </div>   */}
       </div>
       
     </div>

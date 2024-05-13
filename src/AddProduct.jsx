@@ -68,9 +68,9 @@ const handleSubmit = async (event) => {
                     <div className='flex gap-4 h-80'>
 
                     <div className='flex flex-col gap-8 justify-between'>
-                        <div className='text-lg  h-12 flex items-center'>Product Name :</div>
-                        <div className='text-lg h-12 flex items-center'>Artist Name :</div>
-                        <div className='text-lg h-24 flex items-center'>Product Descprition :</div>
+                        <div className='text-lg  h-24 flex items-center'>Product Name :</div>
+                        <div className='text-lg h-24 flex items-center'>Artist Name :</div>
+                        <div className='text-lg h-48 flex items-center'>Product Descprition :</div>
                         <div className='text-lg h-24 flex items-center'>Product Id :</div>
                         <div className='text-lg h-24 flex items-center'>Artist Id :</div>
                         {/* <div className='text-lg '>Product Name :</div> */}

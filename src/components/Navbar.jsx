@@ -22,7 +22,7 @@ function Navbar() {
         </div>
 
         <div class="wishlist">
-          <a href="#">Wishlist</a>
+         <Link className='text-black' to="/Wishlist">Wishlist</Link>
         </div>
         <div class="cart"><Link className="text-black" to='/Cart' >Cart</Link></div>
         

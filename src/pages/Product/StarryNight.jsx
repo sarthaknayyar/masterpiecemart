@@ -76,7 +76,8 @@ function ProductPage(props) {
     productImage:props.productImage,
     artistName: props.artistName,
     productName: props.productName,
-    productId: props.productId
+    productId: props.productId,
+    quantiy: 1
   };  
 
   const addToCart = (element) => {

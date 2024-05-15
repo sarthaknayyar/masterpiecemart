@@ -40,7 +40,7 @@ function App() {
     <Route
       key={product.productId}
       path={`/${product.productName}`}
-      element={<StarryNight productId={product.productId} productName={product.productName} artistName = {product.artistName} artistId={product.artistId} price={product.price} productImage = {product.productImage} productDescription= {product.productDescription}/>}
+      element={<StarryNight productId={product.productId} productName={product.productName} artistName = {product.artistName} artistId={product.artistId} price={product.price} productImage = {product.productName} productDescription= {product.productDescription}/>}
       
     />
   ));

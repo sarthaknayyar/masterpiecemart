@@ -130,11 +130,7 @@ function ProductPage(props) {
             </ol>
             <div class="carousel-inner prod-img  h-100 overflow-hidden">
               <div class="carousel-item active  ">
-                <img
-                  class="d-block w-fit overflow-hidden"
-                  src={props.productImage}
-                  alt="First slide"
-                />
+              <img className='' src={`http://localhost:8080/api/allproducts/image/${props.productName}`} alt="img" />
               </div>
               <div class="carousel-item">
                 <img

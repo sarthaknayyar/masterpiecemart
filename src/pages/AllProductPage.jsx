@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
-import { Link } from 'react-router-dom';
+import { Await, Link } from 'react-router-dom';
 
 function ProductGrid() {
   const [products, setProducts] = useState([]);
@@ -16,7 +16,12 @@ function ProductGrid() {
         throw new Error('Failed to fetch products');
       }
       const data = await response.json();
-      setProducts(data); // Update state with fetched products
+      
+      setProducts(data);
+      if(data){
+        console.log(data)
+      }
+      // await console.log(products) // Update state with fetched products
     } catch (error) {
       console.error(error);
       // Handle error fetching products
@@ -44,7 +49,7 @@ function ProductGrid() {
         onMouseEnter={() => handleMouseEnter(product.productId)}
         onMouseLeave={handleMouseLeave} to={`/${product.productName}`}>
           <div className='flex flex-col items-center'>
-          <img className='w-80 h-60' src={`${product.productImage}`} alt="" />
+          <img className='w-80 h-60' src={`http://localhost:8080/api/allproducts/image/${product.imageName}`} alt={product.productName} />
           <div className='flex flex-col items-center mt-4 text-lg' >
           <h2 className="text-xl font-semibold">{product.productName}</h2>
           <p className="text-gray-600">{product.artistName}</p>

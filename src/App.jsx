@@ -14,6 +14,9 @@ import StarryNight from './pages/Product/StarryNight.jsx';
 import Doe from './pages/Product/Doe.jsx';
 import AddProduct from './AddProduct.jsx'
 import Wishist from './pages/Wishlist.jsx'
+import Blog from './pages/Blog.jsx'
+import CreatePost from './pages/CreatePost.jsx'
+import PostDetail from './pages/PostDetail.jsx'
 
 
 function App() {
@@ -31,16 +34,18 @@ function App() {
       const response = await fetch('http://localhost:8080/api/allproducts');
       const data = await response.json();
       setProducts(data); // Assuming data is an array of products with IDs
+      // console.log("hi " + products)
     } catch (error) {
       console.error('Error fetching products:', error);
     }
   };
 //  const element = product.productName;
   const productsRoutes = products.map(product => (
+    // console.log("b "+product.data1.name),
     <Route
       key={product.productId}
       path={`/${product.productName}`}
-      element={<StarryNight productId={product.productId} productName={product.productName} artistName = {product.artistName} artistId={product.artistId} price={product.price} productImage = {product.productName} productDescription= {product.productDescription}/>}
+      element={<StarryNight productId={product.productId} productName={product.productName} artistName = {product.artistName} artistId={product.artistId} price={product.price} productImage = {product.productName} productSubImage1 ={product.data1.name} productSubImage2 = {product.data2.name} productDescription= {product.productDescription}/>}
       
     />
   ));
@@ -57,6 +62,10 @@ function App() {
         <Route path='/' element={<AllProductPage />} />
         <Route path='/AddProduct' element={<AddProduct />} />
         <Route path="/Wishlist" element={<Wishist/>}></Route>
+        <Route path='/Blog' element={<Blog />}></Route>
+        
+        <Route path='/api/posts' element={<CreatePost />}></Route>
+        <Route path='/api/posts/:id' element={<PostDetail />}></Route>
         </Routes> 
       </div>
       

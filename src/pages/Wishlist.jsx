@@ -87,10 +87,10 @@ function Cart() {
         <Navbar />
     <div
       style={{
-        transform: "scale(0.67)",
+        transform: "scale(0.58)",
         transformOrigin: "0 0",
-        width: "150%",
-        height: "150%",
+        width: "167%",
+        height: "167%",
       }}
     >
       <div className="flex mt-6 mb-20 text-4xl font-bold justify-center">
@@ -104,13 +104,9 @@ function Cart() {
             <div className="flex justify-between  bg-gray-100 border-2 border-gray-300 p-4 shadow-xl rounded-xl text-black " key={product.productId}>
           <div className="flex flex-col justify-around h-60 ml-10">
             <div className="flex justify-center px-1 mt-8 text-2xl font-bold">ITEM</div>
-            <Link to={`/${product.productName}`} className="flex gap-48 text-xl justify-between items-center mt-4 text-current hover:text-current hover:no-underline">
+            <Link to={`/${product.productName}`} className="flex gap-36 text-xl justify-between items-center mt-4 text-current hover:text-current hover:no-underline">
               <div className="w-60 border-2 border-black">
-                <img
-                  className="border-2 border-black"
-                  src={`${product.productImage}`}
-                  alt=""
-                />
+              <img className=''  src={`http://localhost:8080/api/allproducts/image0/${product.productName}`} alt="img" />
               </div>
               <div className="flex-col leading-10">
                 <div className="flex justify-center text-3xl font-semi-bold italic w-80 leading-10">
@@ -124,8 +120,8 @@ function Cart() {
             </Link>
           </div>
 
-          <div className="flex flex-col justify-around items-center mx-12">
-            <div className="flex justify-center  text-2xl font-bold">
+          <div className="flex flex-col justify-around items-center mx-12 mb-4">
+            <div className="flex justify-center  text-2xl font-bold mb-6">
               PRICE
             </div>
             <div className="flex text-3xl ">
@@ -133,8 +129,8 @@ function Cart() {
               </div>
           </div>
 
-          <div className="flex flex-col justify-around items-center mx-12">
-            <div className="flex justify-center px-1 mt-2  text-2xl font-bold">
+          <div className="flex flex-col justify-around items-center mx-12 mb-4">
+            <div className="flex justify-center px-1 mt-2  text-2xl font-bold mb-10">
               REMOVE
             </div>
             <div className="flex text-xl justify-between items-center ">

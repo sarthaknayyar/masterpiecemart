@@ -7,6 +7,7 @@ import "../ProductPage.css";
 import { cart_prod } from "../../services/cart";
 import Navbar from "../../components/Navbar";
 import { wishlist_prod } from "../../services/wishlist";
+import { Link } from "react-router-dom";
 
 function ProductPage(props) {
   const [cartStatus, setCartStatus] = useState("Add To Cart");
@@ -90,6 +91,7 @@ function ProductPage(props) {
   };
   
 };
+// console.log("hi "+props.productSubImage1)
 
   const addToWishlist = (element) => {
     if (!element.classList.contains("added")) {
@@ -102,10 +104,18 @@ function ProductPage(props) {
   };
   return (
     <>
+    <div className="">
       {/* <header> */}
       <Navbar />
       {/* </header> */}
-      <div className="product-mains flex ">
+      <div 
+      style={{
+        transform: "scale(0.80)",
+        transformOrigin: "0 0",
+        width: "125%",
+        height: "125%",
+      }}
+      className="product-mains flex ">
         <div className="product-image w-1/2 flex justify-center items-center h-fit overflow-hidden" 
         >
           <div 
@@ -128,23 +138,16 @@ function ProductPage(props) {
                 data-slide-to="2"
               ></li>
             </ol>
-            <div class="carousel-inner prod-img  h-100 overflow-hidden">
+            <div class="carousel-inner prod-img  h-96 overflow-hidden">
               <div class="carousel-item active  ">
-              <img className='' src={`http://localhost:8080/api/allproducts/image/${props.productName}`} alt="img" />
+              <img className=''  src={`http://localhost:8080/api/allproducts/image0/${props.productName}`} alt="img" />
               </div>
               <div class="carousel-item">
-                <img
-                  class="d-block"
-                  src="prodimg2 (1).jpg"
-                  alt="Second slide"
-                />
+              <img className=''  src={`http://localhost:8080/api/allproducts/image1/${props.productName+'1'}`} alt="img" />
+      
               </div>
               <div class="carousel-item">
-                <img
-                  class="d-block "
-                  src="prod4 (1).jpg"
-                  alt="Third slide"
-                />
+              <img className=''  src={`http://localhost:8080/api/allproducts/image2/${props.productName+'2'}`} alt="img" />
               </div>
             </div>
             <a
@@ -302,7 +305,8 @@ function ProductPage(props) {
             <a href="#">Contact Us</a>
             <a href="#">Returns</a>
             <a href="#">About Us</a>
-            <a href="#">Blog</a>
+            {/* <a href="">Blog</a> */}
+            <Link to="/Blog">Blog</Link>
             <a href="#">Team Wizard</a>
           </div>
         </div>
@@ -340,7 +344,9 @@ function ProductPage(props) {
           <div className="end-content">Copyright &#169; 2023</div>
         </div>
       </footer>
+      </div>
     </>
+
   );
   
 }

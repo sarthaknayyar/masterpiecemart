@@ -28,6 +28,8 @@ function ProductGrid() {
     }
   };
 
+  
+
   const [hoveredProductId, setHoveredProductId] = useState(null);
 
   const handleMouseEnter = productId => {
@@ -49,7 +51,7 @@ function ProductGrid() {
         onMouseEnter={() => handleMouseEnter(product.productId)}
         onMouseLeave={handleMouseLeave} to={`/${product.productName}`}>
           <div className='flex flex-col items-center'>
-          <img className='w-80 h-60' src={`http://localhost:8080/api/allproducts/image/${product.imageName}`} alt={product.productName} />
+          <img className='w-80 h-60' src={`http://localhost:8080/api/allproducts/image0/${product.imageName}`} alt={product.productName} />
           <div className='flex flex-col items-center mt-4 text-lg' >
           <h2 className="text-xl font-semibold">{product.productName}</h2>
           <p className="text-gray-600">{product.artistName}</p>

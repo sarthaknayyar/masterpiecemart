@@ -38,7 +38,13 @@ function Cart() {
         console.log(err);
         setError(err);
       });
-  }, []);
+  },
+  
+  []);
+
+  
+
+
 
   const handleQuantityChange = async (productId) => {
     // Find the product to update
@@ -223,11 +229,7 @@ if(delivery>1000){
             <div className="flex justify-center px-1 mt-8 text-xl font-bold">ITEM</div> 
             <Link to={`/${product.productName}`} className="flex gap-24 text-xl justify-between items-center mt-4 text-current hover:no-underline hover:text-current">
               <div className="w-48 border-2 border-black">
-                <img
-                  className="border-2 border-black"
-                  src={`${product.productImage}`}
-                  alt=""
-                />
+              <img className=''  src={`http://localhost:8080/api/allproducts/image0/${product.productName}`} alt="img" />
               </div>
               <div className="flex-col">
                 <div className="flex justify-center text-2xl font-semi-bold italic w-80">
@@ -287,43 +289,39 @@ if(delivery>1000){
       ))}
 
       </div>
-      <div className="flex flex-col gap-4 w-1/3 items-center">
-      <div className="flex flex-col w-2/3 p-4 justify-between bg-gray-100 border-2 border-gray-300 shadow-xl rounded-xl h-100">
-        <div className="flex justify-center items-center text-3xl font-semibold ">ORDER SUMMARY</div>
-        <div className="flex justify-around items-center">
-        <div class="flex flex-col text-2xl font-bold items-start justify-around h-96">
-  <div>TOTAL ITEMS</div>
-  <div>PRICE</div>
-            <div>DELIVERY CHARGES</div>
-            <div>SUBTOTAL</div>
+      <div className="flex flex-col gap-4 w-auto items-center h-auto ">
+  <div className="flex flex-col w-auto py-10 px-20 justify-between bg-gray-100 border-2 border-gray-300 shadow-xl rounded-xl gap-10 ">
+    <div className="flex justify-center items-center text-3xl font-semibold mb-6">ORDER SUMMARY</div>
+    <div className="flex justify-around items-center gap-10">
+      <div className="flex flex-col text-2xl font-bold items-start justify-around gap-8">
+        <div>TOTAL ITEMS</div>
+        <div>PRICE</div>
+        <div>DELIVERY CHARGES</div>
+        <div>SUBTOTAL</div>
+      </div>
+
+      <div className="flex flex-col text-2xl justify-around gap-10">
+        <div>
+          {products.reduce((acc, product) => acc + product.quantity, 0)}
+        </div>
+        <div>
+          Rs. {products.reduce((acc, product) => acc + product.price * product.quantity, 0)}
+        </div>
+        <div>
+          Rs. {delivery}
+        </div>
+        <div>
+          Rs. {products.reduce((acc, product) => acc + product.price * product.quantity, delivery)}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div className="text-2xl">
+    {delStatus}
+  </div>
 </div>
 
-
-            <div className="flex flex-col text-2xl justify-around h-96">
-                <div>
-                    {products.reduce((acc, product) => acc + product.quantity, 0)}
-
-                </div>
-                <div>
-                    Rs. {products.reduce((acc, product) => acc + product.price * product.quantity, 0)}
-
-                </div>
-                <div>
-                    Rs. {delivery}
-                </div>
-                <div>
-                    Rs. {products.reduce((acc, product) => acc + product.price * product.quantity, delivery)}
-                </div>
-            </div>
-        </div>
-        
-      </div> 
-
-      <div className="text-2xl ">
-        {delStatus}
-      </div>
-     
-      </div>
 
       </div>
       

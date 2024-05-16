@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
+import { toast } from 'react-toastify';
 
 function AddProduct() {
 
@@ -10,33 +11,43 @@ function AddProduct() {
     productName: '',
     productImage: null,
     productId: '',
-    productDescription: ''
+    productDescription: '',
+    subImage1: null,
+    subImage2: null,
   });
 
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState(<span></span>);
 
   const handleInputChange = (event) => {
     const { name, value, files } = event.target;
-    if (name === 'productImage') {
+    if (name === 'productImage' || name==='subImage1' || name==='subImage2') {
       // Check if files property exists and is not null
-      if (files && files.length > 0) {
+    //   if (files && files.length > 0) {
         setFormData({
           ...formData,
           [name]: files[0] // Store the file object directly
         });
-      } else {
+    //   } else {
         // Clear the productImage state if no file is selected
-        setFormData({
-          ...formData,
-          [name]: null
-        });
-      }
+        // setFormData({
+        //   ...formData,
+        //   [name]: null
+        // });
+    //   }
     } else {
       setFormData({
         ...formData,
         [name]: value
       });
     }
+  };
+
+  const successMessage = () => {
+    toast.success('New Product Added Successfully!');
+  };
+
+  const failMessage = () => {
+    toast.error('Failed To Add Product!, Kindly Check All Fields!');
   };
 
   const handleSubmit = async (event) => {
@@ -52,7 +63,9 @@ function AddProduct() {
       formDataToSend.append('productId', formData.productId);
 
       // Append the image file with the correct field name
-      formDataToSend.append('file', formData.productImage);
+      formDataToSend.append('file0', formData.productImage);
+      formDataToSend.append('file1', formData.subImage1);
+      formDataToSend.append('file2', formData.subImage2);
 
       const response = await fetch('http://localhost:8080/api/allproducts', {
         method: 'POST',
@@ -63,8 +76,9 @@ function AddProduct() {
         console.log(formData);
         throw new Error('Failed to add product');
       }
-
-      setMessage('Product added successfully!');
+      console.log(formDataToSend);
+      setMessage(<span className='text-green-500'>Product added successfully!</span>);
+      
       // Optionally, reset the form after successful submission
       setFormData({
         productName: '',
@@ -73,20 +87,31 @@ function AddProduct() {
         price: 0,
         artistId: '',
         productImage: null,
-        productId: ''
+        productId: '',
+        subImage1: null,
+        subImage2: null,
       });
+      successMessage();
     } catch (error) {
-      setMessage('Error adding product: ' + error.message);
+      failMessage();
+      setMessage(<span className='text-red-500'>Error adding product </span>);
     }
   };
 
   return (
     <>
       <Navbar />
-      <div className='p-4 m-2 h-screen '>
+      <div 
+      style={{
+        transform: "scale(0.72)",
+        transformOrigin: "0 0",
+        width: "137%",
+        height: "137%",
+      }}
+      className='p-4 m-2 h-screen '>
         <div className='text-3xl text-black font-bold flex justify-center'>ADD PRODUCT</div>
-        <div className='text-black flex justify-center items-center p-8 m-4'>
-          <div className='text-black flex flex-col mx-40 w-1/2'>
+        <div className='text-black flex justify-between items-center p-8 m-4'>
+          <div className='text-black flex flex-col  w-1/2'>
             <div className='flex flex-col bg-gray-100 p-4 my-4 items-center rounded-xl shadow-xl'>
               <div className='text-2xl font-bold mb-8'> PRODUCT DESCRIPTION</div>
               <div className='flex gap-4 h-80'>
@@ -123,9 +148,13 @@ function AddProduct() {
             <div className='flex gap-4 h-96'>
               <div className='flex flex-col text-xl justify-between h-68 '>
                 <div className='text-lg flex items-center justify-between w-32'>Cover Picture : </div>
+                <div className='text-lg flex items-center justify-between w-32'>Sub Image1 : </div>
+                <div className='text-lg flex items-center justify-between w-32'>Sub Image2 : </div>
               </div>
               <div className='flex flex-col justify-between '>
                 <input name='productImage' type='file' onChange={handleInputChange} className="block w-full text-md text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" />
+                <input name='subImage1' type='file' onChange={handleInputChange} className="block w-full text-md text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" />
+                <input name='subImage2' type='file' onChange={handleInputChange} className="block w-full text-md text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" />
               </div>
             </div>
           </div>

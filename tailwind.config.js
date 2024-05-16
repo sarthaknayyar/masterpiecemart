@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'backgroundImage': "background.jpg",
+      },
       colors: {
         zinc:'#7D7D7D',
       },

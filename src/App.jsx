@@ -17,6 +17,9 @@ import Wishist from './pages/Wishlist.jsx'
 import Blog from './pages/Blog.jsx'
 import CreatePost from './pages/CreatePost.jsx'
 import PostDetail from './pages/PostDetail.jsx'
+import Login from './pages/Login.jsx'
+import SignUp from './pages/SignUp.jsx'
+import CheckOut from './pages/CheckOut.jsx'
 
 
 function App() {
@@ -66,6 +69,9 @@ function App() {
         
         <Route path='/api/posts' element={<CreatePost />}></Route>
         <Route path='/api/posts/:id' element={<PostDetail />}></Route>
+        <Route path='/Login' element ={<Login />}></Route>
+        <Route path='/SignUp' element ={<SignUp />}></Route>
+        <Route path='/CheckOut' element ={<CheckOut />}></Route>
         </Routes> 
       </div>
       

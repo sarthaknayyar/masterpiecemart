@@ -6,7 +6,6 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 
-
 function Cart() {
   const [error, setError] = useState(null);
   const [products, setProducts] = useState([]);
@@ -193,6 +192,33 @@ if(delivery>1000){
       }
     // }
   };
+
+
+  
+    const [formData, setFormData] = useState({
+      firstName: "",
+      lastName: "",
+      address: "",
+      city: "",
+      state: "",
+      country: "",
+      phone: "",
+      email: ""
+    });
+  
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value
+      }));
+    };
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      // You can handle form submission here
+      console.log("Form data submitted:", formData);
+    };
   
 
   if (error) {
@@ -218,76 +244,110 @@ if(delivery>1000){
       }}
     >
       <div className="flex mt-6 mb-20 text-4xl font-bold justify-center">
-        Items in your cart!
+        Fill Out Details!
       </div>
       <div className="flex  justify-around">
-      <div className="flex flex-col ">
+      {/* <div className="flex flex-col "> */}
       {/* <div className="border-2 border-gray-500 w-full mt-10" /> */}
-      {products.map((product) => (
-        <div className="flex flex-col ">
-            <div className="flex justify-between  bg-gray-100 border-2 border-gray-300 p-4 shadow-xl rounded-xl text-current hover:no-underline hover:text-current" key={product.productId}>
-          <div className="flex flex-col justify-around h-60 ml-10">
-            <div className="flex justify-center px-1 mt-8 text-xl font-bold">ITEM</div> 
-            <Link to={`/${product.productName}`} className="flex gap-24 text-xl justify-between items-center mt-4 text-current hover:no-underline hover:text-current">
-              <div className="w-48 border-2 border-black">
-              <img className=''  src={`http://localhost:8080/api/allproducts/image0/${product.productName}`} alt="img" />
-              </div>
-              <div className="flex-col">
-                <div className="flex justify-center text-2xl font-semi-bold italic w-80">
-                  {product.productName}
-                </div>
-                <div className="flex justify-center">By</div>
-                <div className="flex justify-center text-2xl italic">
-                  {product.artistName}
-                </div>
-              </div>
-            </Link>
-          </div>
-
-          <div className="flex flex-col justify-around items-center mx-12">
-            <div className="flex justify-center  text-xl font-bold">
-              PRICE
-            </div>
-            <div className="flex text-2xl ">
-                Rs. {product.price}
-              </div>
-          </div>
-
-          <div className="flex flex-col justify-around items-center mx-12">
-            <div className="flex justify-center px-1 mt-2  text-xl font-bold">
-              QUANTITY
-            </div>
-            <div className="flex text-xl justify-between items-center ">
-              <div className="flex justify-center items-center w-48 text-2xl">
-                <div className="flex justify-center items-center w-8 h-8 border-2 border-gray-900">
-                  {product.quantity}
-                </div>
-                <div className="flex flex-col ml-2 font-bold">
-                  <div onClick={() => handleQuantityChange(product.productId)}>
-                    <ArrowDropUpIcon />
-                  </div>
-                  <div onClick={() => handleQuantityChangeDec(product.productId)}>
-                    <ArrowDropDownIcon />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col justify-around items-center mx-12">
-            <div className="flex justify-center px-1  text-xl font-bold">
-              SUBTOTAL
-            </div>
-            <div className="flex text-xl justify-between items-center ">
-              <div className="flex justify-center w-48 text-2xl">
-                Rs. {product.price * product.quantity}
-              </div>
-            </div>
-          </div>
+      {/* {products.map((product) => ( */}
+        <div className="flex flex-col bg-gray-100 p-4 rounded-xl text-2xl font-bold w-1/3 border-2 border-gray-300 shadow-xl">
+            <div className="max-w-md mx-auto mt-10">
+            <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="flex gap-4">
+          <label htmlFor="firstName" className="w-52">First Name:</label>
+          <textarea
+            id="firstName"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            placeholder="Enter first name"
+            className="w-full border rounded-xl border-black px-3 py-2"
+          />
         </div>
+        <div className="flex gap-4">
+          <label htmlFor="lastName" className="w-52">Last Name:</label>
+          <textarea
+            id="lastName"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            placeholder="Enter last name"
+            className="w-full border rounded-xl border-black px-3 py-2"
+          />
+        </div>
+        <div className="flex gap-4">
+          <label htmlFor="address" className="w-52">Address:</label>
+          <textarea
+            id="address"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            placeholder="Enter address"
+            className="w-full border rounded-xl border-black px-3 py-2"
+          />
+        </div>
+        <div className="flex gap-4">
+          <label htmlFor="city" className="w-52">City:</label>
+          <textarea
+            id="city"
+            name="city"
+            value={formData.city}
+            onChange={handleChange}
+            placeholder="Enter city"
+            className="w-full border rounded-xl border-black px-3 py-2"
+          />
+        </div>
+        <div className="flex gap-4">
+          <label htmlFor="state" className="w-52">State:</label>
+          <textarea
+            id="state"
+            name="state"
+            value={formData.state}
+            onChange={handleChange}
+            placeholder="Enter state"
+            className="w-full border rounded-xl border-black px-3 py-2"
+          />
+        </div>
+        <div className="flex gap-4">
+          <label htmlFor="country" className="w-52">Country:</label>
+          <textarea
+            id="country"
+            name="country"
+            value={formData.country}
+            onChange={handleChange}
+            placeholder="Enter country"
+            className="w-full border rounded-xl border-black px-3 py-2"
+          />
+        </div>
+        <div className="flex gap-4">
+          <label htmlFor="phone" className="w-52">Phone No.:</label>
+          <textarea
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="Enter phone number"
+            className="w-full border rounded-xl border-black px-3 py-2"
+          />
+        </div>
+        <div className="flex gap-4">
+          <label htmlFor="email" className="w-52">Email:</label>
+          <textarea
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Enter email"
+            className="w-full border rounded-xl border-black px-3 py-2"
+          />
         </div>
         
-      ))}
+      </form>
+      
+    {/* </div> */}
+        </div>
+        
+      {/* ))} */}
 
       </div>
       <div className="flex flex-col gap-4 w-auto items-center h-auto ">
@@ -318,16 +378,6 @@ if(delivery>1000){
     </div>
   </div>
 
-<Link to="/CheckOut" className="text-current hover:text-current hover:no-underline">
-        <button
-            type="button"
-            className=" bg-red-400 rounded-2xl w-48 h-24 flex flex-wrap p-2 justify-center items-center text-2xl font-bold mt-4 hover:bg-red-500"
-            
-          >
-            Proceed To CheckOut
-            </button>
-</Link>
-
   <div className="text-2xl">
     {delStatus}
   </div>
@@ -335,6 +385,16 @@ if(delivery>1000){
 
 
       </div>
+<div className="flex justify-center mt-8">
+
+      <button
+            type="button"
+            className=" bg-red-500 rounded-2xl w-56 h-28 flex flex-wrap border-2 border-black p-2 justify-center items-center text-3xl font-bold mt-4 hover:bg-red-500 hover:shadow-xl hover:border-2 hover:border-black hover:bg-red-600"
+            
+          >
+            Proceed To Pay
+            </button>
+</div>
       
     </div>
     </>

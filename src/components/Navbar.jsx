@@ -28,7 +28,7 @@ function Navbar() {
         
 
         <div class="login">
-          <a href="loginpage.html">Login</a> <i class="fa-solid fa-user"></i>
+          <Link className='text-black' to='/Login'>Login</Link> <i class="fa-solid fa-user"></i>
         </div>
 
         <div className='addProduct'>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function Navbar() {
   return (
-    <div className="bg-red-200 flex justify-around items-center h-16 px-6 gap-8 border-2 border-gray-300 rounded-xl mt-1">
+    <div className="bg-gray-200 flex justify-around items-center h-16 px-6 gap-8 border-2 border-gray-300 rounded-xl mt-1  shadow-xl">
       
       <div className="flex items-center gap-8">
         <div className="mr-4 flex text-black text-2xl font-bold hover:text-current hover:no-underline">

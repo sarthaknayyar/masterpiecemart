@@ -117,7 +117,7 @@ function AddProduct() {
           </div>
         <div className='text-black flex justify-between items-center p-8 m-4'>
           <div className='text-black flex flex-col  w-1/2'>
-            <div className='flex flex-col bg-red-50 p-4 my-4 border-2 border-black items-center rounded-xl shadow-xl text-2xl'>
+            <div className='flex flex-col bg-gray-100 p-4 my-4 border-2 border-black items-center rounded-xl shadow-xl text-2xl'>
               <div className='text-2xl font-bold mb-8'> PRODUCT DESCRIPTION</div>
               <div className='flex gap-4 h-80'>
                 <div className='flex flex-col gap-8 justify-between'>
@@ -136,7 +136,7 @@ function AddProduct() {
                 </div>
               </div>
             </div>
-            <div className='flex flex-col bg-red-50 p-4 my-4 items-center rounded-xl shadow-xl border-2 border-black text-2xl'>
+            <div className='flex flex-col bg-gray-100 p-4 my-4 items-center rounded-xl shadow-xl border-2 border-black text-2xl'>
               <div className='text-2xl font-bold mb-8'> PRODUCT PRICE</div>
               <div className='flex gap-4 '>
                 <div className='flex flex-col text-2xl justify-between h-28 '>
@@ -148,7 +148,7 @@ function AddProduct() {
               </div>
             </div>
           </div>
-          <div className='flex flex-col bg-red-50 p-4 my-4 h-96 items-center rounded-xl shadow-xl border-2 border-black text-2xl'>
+          <div className='flex flex-col bg-gray-100 p-4 my-4 h-96 items-center rounded-xl shadow-xl border-2 border-black text-2xl'>
             <div className='text-2xl font-bold mb-8'> PRODUCT IMAGES</div>
             <div className='flex gap-4 h-96'>
               <div className='flex flex-col justify-between h-68 '>

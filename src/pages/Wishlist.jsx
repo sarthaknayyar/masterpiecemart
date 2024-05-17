@@ -101,7 +101,7 @@ function Cart() {
       {/* <div className="border-2 border-gray-500 w-full mt-10" /> */}
       {products.map((product) => (
         <div className="flex flex-col ">
-            <div className="flex justify-between  bg-red-50 border-2 border-gray-300 p-4 shadow-xl rounded-xl text-black " key={product.productId}>
+            <div className="flex justify-between  bg-gray-100 border-2 border-gray-300 p-4 shadow-xl rounded-xl text-black " key={product.productId}>
           <div className="flex flex-col justify-around h-60 ml-10">
             <div className="flex justify-center px-1 mt-8 text-2xl font-bold">ITEM</div>
             <Link to={`/${product.productName}`} className="flex gap-36 text-xl justify-between items-center mt-4 text-current hover:text-current hover:no-underline">

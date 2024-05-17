@@ -122,18 +122,19 @@ function PostDetail() {
 
         <form onSubmit={handleSubmitComment} className="comment-form">
           <textarea
+          className="border-2 border-black"
             value={newComment}
             onChange={handleCommentChange}
             placeholder="Write your comment here..."
           />
           <br />
           <br />
-          <input
+          {/* <input
             type="text"
             value={postedBy}
             onChange={handlePostedByChange}
             placeholder="Your name"
-          />
+          /> */}
           <br />
           <br />
           <button type="submit">Add Comment</button>

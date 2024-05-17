@@ -36,7 +36,7 @@ const Home = () => {
 
       {/* show-pieces section */}
       <section>
-        <div className="flex justify-center bg-red-50 items-center p-2">
+        <div className="flex justify-center bg-gray-100 items-center p-2">
           <div > &#8595; Art Pieces &#8595; </div>
         </div>
 
@@ -49,7 +49,7 @@ const Home = () => {
           <div className="img6 h-full w-full"><img src="prod3.jpg" alt="" /></div>
         </div>
       </section>
-      <div className="bg-red-50 w-full h-3"></div>
+      <div className="bg-gray-100 w-full h-3"></div>
 
       {/* Our moto section */}
       <section>
@@ -105,7 +105,7 @@ const Home = () => {
 
       {/* Invitation section */}
       <section className="flex justify-center">
-        <div className="flex flex-col bg-red-50 w-1/2">
+        <div className="flex flex-col bg-gray-200 w-1/2">
           <div className="flex justify-center text-6xl font-bold p-16">You are invited</div>
           <div className="invite-message">
             "Stay up-to-date with monthly new art releases,

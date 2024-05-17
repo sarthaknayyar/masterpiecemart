@@ -206,7 +206,7 @@ function ProductPage(props) {
                 <div className="item-year">2023</div>
               </div>
               <div className="product-size">20"h X 20"w</div>
-              <div className="product-price">${props.price}</div>
+              <div className="product-price font-bold m-2">Rs. {props.price}</div>
               <div className="product-shipment">No Shipping Charges</div>
               <div className="buyandcart flex flex-col justify-center">
                 <div className="flex">

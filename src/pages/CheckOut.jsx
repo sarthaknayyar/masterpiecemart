@@ -52,7 +52,13 @@ function Cart() {
   
     // Increment the quantity for the found product
     const updatedProductWithIncrementedQuantity = { ...updatedProduct, quantity: updatedProduct.quantity + 1 };
-    const total = state.price;
+    const total = products.reduce((acc, product) => {
+      if (product.productId === productId) {
+        return acc + product.price * (product.quantity + 1);
+      } else {
+        return acc + product.price * product.quantity;
+      }
+    }, 0);
      if(total<=1000){
       setDelStatus(<span className="text-red-500">Free Delivery For Cart Value Above 1000</span>)
      }
@@ -244,7 +250,7 @@ if(delivery>1000){
       {/* <div className="flex flex-col "> */}
       {/* <div className="border-2 border-gray-500 w-full mt-10" /> */}
       {/* {products.map((product) => ( */}
-        <div className="flex flex-col bg-red-50 p-4 rounded-xl text-2xl font-bold w-1/3 border-2 border-gray-300 shadow-xl">
+        <div className="flex flex-col bg-gray-100 p-4 rounded-xl text-2xl font-bold w-1/3 border-2 border-gray-300 shadow-xl">
             <div className="max-w-md mx-auto mt-10">
             <form onSubmit={handleSubmit} className="space-y-4">
         <div className="flex gap-4">
@@ -345,7 +351,7 @@ if(delivery>1000){
 
       </div>
       <div className="flex flex-col gap-4 w-auto items-center h-auto ">
-  <div className="flex flex-col w-auto py-10 px-20 justify-between bg-red-50 border-2 border-gray-300 shadow-xl rounded-xl gap-10 ">
+  <div className="flex flex-col w-auto py-10 px-20 justify-between bg-gray-100 border-2 border-gray-300 shadow-xl rounded-xl gap-10 ">
     <div className="flex justify-center items-center text-3xl font-semibold mb-6">ORDER SUMMARY</div>
     <div className="flex justify-around items-center gap-10">
       <div className="flex flex-col text-2xl font-bold items-start justify-around gap-8">

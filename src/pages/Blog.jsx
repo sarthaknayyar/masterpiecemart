@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
-// import "./Style/Blog.css";
 
 function Blog() {
   const [posts, setPosts] = useState([]);
@@ -29,56 +28,66 @@ function Blog() {
 
   return (
     <>
-        <Navbar />
-    <div className="my-4">
-        <div className="flex flex-col">
+      <Navbar />
+      <div className="my-4">
+        <header className="flex flex-col items-center bg-gray-200 p-6 m-6">
+          <h1 className="text-5xl font-bold">A Gallery of Inspiration</h1>
+          <p className="text-2xl mt-4">A Blog By MasterPiece Mart</p>
+        </header>
 
-        <header className="header flex-col justify-center">
-        <h1 className="header_title flex justify-center bg-gray-200 text-5xl">A Gallery of Inspiration</h1>
-        <p className="header_desc flex justify-center text-2xl mt-4">A Blog By MasterPiece Mart</p>
-      </header>
+        <div className="container mx-auto p-4 text-xl mt-4 bg-gray-200 rounded-md shadow-md">
+          <Link to="/api/posts">
+            <button
+              type="submit"
+              className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
+            >
+              Create Post
+            </button>
+          </Link>
 
+          <div className="mt-4">
+            <input
+              type="text"
+              placeholder="Search posts..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+              className="w-full p-2 border-2 border-gray-300 rounded-md"
+            />
+          </div>
         </div>
-      
-      <div className="container flex flex-col justify-center items-center p-2 text-xl gap-4 mt-4 bg-gray-200">
-        <Link to="/api/posts">
-        <button type="submit" className="button bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Create Post</button>
-        </Link>
 
-        <div className="search_bar text-2xl border-2 border-white rounded-xl">
-          <input
-            type="text"
-            placeholder="Search posts..."
-            value={searchQuery}
-            onChange={handleSearchChange}
-            className="input_box"
-          />
-        </div>
-      </div>
-      <div className="main_container flex justify-center flex-wrap gap-4 mt-4">
-        {posts.map((post) => (
-          <Link key={post.id} to={`/api/posts/${post.id}`} className="card_link text-current hover:no-underline">
-            <div className="card_container border-gray-200 border-2 rounded-xl overflow-hidden">
-              <div className="card_image_container h-52 overflow-hidden">
-                <img src={post.img} alt={post.name} className="card_image" />
-              </div>
-              <div className="card_title_container p-4">
-                <h2 className="card_title text-xl font-bold mb-4">{post.name}</h2>
-                <p className="card_desc text-lg mb-4">Posted by: {post.postedBy}</p>
-                <p className="card_desc text-lg mb-4">
-                  Date: {new Date(post.date).toLocaleDateString()}
-                </p>
-                <p className="card_desc text-lg mb-4">Likes: {post.likeCount}</p>
-                <p className="card_desc text-lg mb-4">Views: {post.viewCount}</p>
-                <div className="card_tag_container text-md flex">
-                  Tags: {post.tags.join(", ")}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 mt-4">
+          {posts.map((post) => (
+            <Link
+              key={post.id}
+              to={`/api/posts/${post.id}`}
+              className="block hover:no-underline"
+            >
+              <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div className="h-52 overflow-hidden">
+                  <img
+                    src={post.img}
+                    alt={post.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-4">
+                  <h2 className="text-xl font-bold mb-2">{post.name}</h2>
+                  <p className="text-gray-600 mb-2">Posted by: {post.postedBy}</p>
+                  <p className="text-gray-600 mb-2">
+                    Date: {new Date(post.date).toLocaleDateString()}
+                  </p>
+                  <p className="text-gray-600 mb-2">Likes: {post.likeCount}</p>
+                  <p className="text-gray-600 mb-2">Views: {post.viewCount}</p>
+                  <div className="text-sm text-gray-600">
+                    Tags: {post.tags.join(", ")}
+                  </div>
                 </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
     </>
   );
 }

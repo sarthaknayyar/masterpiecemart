@@ -138,18 +138,18 @@ function ProductPage(props) {
                 data-slide-to="2"
               ></li>
             </ol>
-            <div class="carousel-inner prod-img  h-96 overflow-hidden">
-              <div class="carousel-item active  ">
-              <img className=''  src={`http://localhost:8080/api/allproducts/image0/${props.productName}`} alt="img" />
-              </div>
-              <div class="carousel-item">
-              <img className=''  src={`http://localhost:8080/api/allproducts/image1/${props.productName+'1'}`} alt="img" />
-      
-              </div>
-              <div class="carousel-item">
-              <img className=''  src={`http://localhost:8080/api/allproducts/image2/${props.productName+'2'}`} alt="img" />
-              </div>
-            </div>
+            <div class="carousel-inner prod-img h-96 overflow-hidden">
+    <div class="carousel-item active">
+        <img class="w-full h-full object-cover" src={`http://localhost:8080/api/allproducts/image0/${props.productName}`} alt="img" />
+    </div>
+    <div class="carousel-item">
+        <img class="w-full h-full object-cover" src={`http://localhost:8080/api/allproducts/image1/${props.productName+'1'}`} alt="img" />
+    </div>
+    <div class="carousel-item">
+        <img class="w-full h-full object-cover" src={`http://localhost:8080/api/allproducts/image2/${props.productName+'2'}`} alt="img" />
+    </div>
+</div>
+
             <a
               class="carousel-control-prev"
               href="#carouselExampleIndicators"

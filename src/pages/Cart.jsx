@@ -5,6 +5,7 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 
 
 function Cart() {
@@ -230,7 +231,7 @@ if(delivery>1000){
             <div className="flex justify-center px-1 mt-8 text-xl font-bold">ITEM</div> 
             <Link to={`/${product.productName}`} className="flex gap-24 text-xl justify-between items-center mt-4 text-current hover:no-underline hover:text-current">
               <div className="w-48 border-2 border-black">
-              <img className=''  src={`http://localhost:8080/api/allproducts/image0/${product.productName}`} alt="img" />
+              <img className='h-36 w-48'  src={`http://localhost:8080/api/allproducts/image0/${product.productName}`} alt="img" />
               </div>
               <div className="flex-col">
                 <div className="flex justify-center text-2xl font-semi-bold italic w-80">
@@ -335,7 +336,7 @@ if(delivery>1000){
 
 
       </div>
-      
+      <Footer />
     </div>
     </>
     )}

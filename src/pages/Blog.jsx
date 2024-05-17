@@ -12,15 +12,22 @@ function Blog() {
         const response = await fetch(
           `http://localhost:8080/api/posts${searchQuery ? `/search/${searchQuery}` : ""}`
         );
-        const data = await response.json();
+  
+        // Log the raw response for inspection
+        const textResponse = await response.text();
+        console.log("Raw response:", textResponse);
+  
+        // Attempt to parse the response as JSON
+        const data = JSON.parse(textResponse);
         setPosts(data);
       } catch (error) {
         console.error("Error fetching posts:", error);
       }
     };
-
+  
     fetchPosts();
   }, [searchQuery]);
+  
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);

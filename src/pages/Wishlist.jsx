@@ -5,6 +5,8 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Navbar from "../components/Navbar";
 import { Link } from 'react-router-dom'
+import Footer from "../components/Footer";
+
 
 function Cart() {
   const [error, setError] = useState(null);
@@ -106,7 +108,7 @@ function Cart() {
             <div className="flex justify-center px-1 mt-8 text-2xl font-bold">ITEM</div>
             <Link to={`/${product.productName}`} className="flex gap-36 text-xl justify-between items-center mt-4 text-current hover:text-current hover:no-underline">
               <div className="w-60 border-2 border-black">
-              <img className=''  src={`http://localhost:8080/api/allproducts/image0/${product.productName}`} alt="img" />
+              <img className='h-40 w-60'  src={`http://localhost:8080/api/allproducts/image0/${product.productName}`} alt="img" />
               </div>
               <div className="flex-col leading-10">
                 <div className="flex justify-center text-3xl font-semi-bold italic w-80 leading-10">
@@ -201,6 +203,7 @@ function Cart() {
       </div>   */}
       </div>
       
+    <Footer />
     </div>
     </>
     )}

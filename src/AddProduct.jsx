@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import { toast } from 'react-toastify';
+import Footer from './components/Footer';
+
 
 function AddProduct() {
 
@@ -10,7 +12,7 @@ function AddProduct() {
     price: 0,
     productName: '',
     productImage: null,
-    productId: '',
+    productId: 0,
     productDescription: '',
     subImage1: null,
     subImage2: null,
@@ -87,7 +89,7 @@ function AddProduct() {
         price: 0,
         artistId: '',
         productImage: null,
-        productId: '',
+        // productId: '',
         subImage1: null,
         subImage2: null,
       });
@@ -124,14 +126,14 @@ function AddProduct() {
                   <div className=' h-24 flex items-center'>Product Name :</div>
                   <div className='h-24 flex items-center'>Artist Name :</div>
                   <div className=' h-48 flex items-center'>Product Description :</div>
-                  <div className=' h-24 flex items-center'>Product Id :</div>
+                  {/* <div className=' h-24 flex items-center'>Product Id :</div> */}
                   <div className='h-24 flex items-center'>Artist Id :</div>
                 </div>
                 <div className='flex flex-col gap-8 justify-between '>
                   <input type="text" name="productName" value={formData.productName} onChange={handleInputChange} placeholder='Name of the product' className='border-2 k w-96 h-12 rounded-lg border-black '/>
                   <input type="text" name="artistName" value={formData.artistName} onChange={handleInputChange} placeholder='Name of the artist' className='w-96 h-12 rounded-lg border-2 border-black '/>
                   <input type="text" name="productDescription" value={formData.productDescription} onChange={handleInputChange} placeholder='Brief description of the product' className='w-96 h-24 rounded-lg text-wrap border-2 border-black'/>
-                  <input type="text" name="productId" value={formData.productId} onChange={handleInputChange} placeholder='Id of the product' className='w-96 h-12 rounded-lg border-2 border-black'/>
+                  {/* <input type="text" name="productId" value={formData.productId} onChange={handleInputChange} placeholder='Id of the product' className='w-96 h-12 rounded-lg border-2 border-black'/> */}
                   <input type="text" name="artistId" value={formData.artistId} onChange={handleInputChange} placeholder='Id of the artist' className='w-96 h-12 rounded-lg border-2 border-black '/>
                 </div>
               </div>
@@ -168,6 +170,7 @@ function AddProduct() {
           <button type="button" onClick={handleSubmit} className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-blue-300 font-medium rounded-2xl text-2xl px-5 py-2.5 text-center mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">SUBMIT</button>
         </div>
         {message && <div className="flex justify-center text-xl font-bold text-red-500">{message}</div>}
+      <Footer />
       </div>
       {/* </div> */}
     </>

@@ -22,6 +22,8 @@ import SignUp from './pages/SignUp.jsx'
 import CheckOut from './pages/CheckOut.jsx'
 import CheckOut2 from './pages/CheckOut2.jsx'
 import Home from './pages/Home.jsx'
+import FAQ from './pages/Faq.jsx'
+import ContactUS from './pages/ContactUs.jsx'
 
 
 function App() {
@@ -75,6 +77,8 @@ function App() {
         <Route path='/SignUp' element ={<SignUp />}></Route>
         <Route path='/CheckOut' element ={<CheckOut />}></Route>
         <Route path='/CheckOut2' element ={<CheckOut2 />}></Route>
+        <Route path='/FAQ' element ={<FAQ />}></Route>
+        <Route path='/ContactUs' element ={<ContactUS />}></Route>
         <Route path='/' element ={<Home />}></Route>
         </Routes> 
       </div>

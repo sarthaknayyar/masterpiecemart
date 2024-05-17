@@ -4,6 +4,7 @@ import { faTelegram } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 // import "../Style/Home.css";
 
 // import { FaSquareInstagram } from "react-icons/fa6";
@@ -72,57 +73,7 @@ const Home = () => {
       </section>
 
       {/* Join Us section */}
-      <section>
-        <div className="join">
-          <div className="join-us-on">JOIN US ON</div>
-          <div className="social">
-            <div className="youtube">
-              {" "}
-              <a href="https://www.youtube.com/@muskanart3102">
-                {" "}
-                <FontAwesomeIcon icon={faYoutube} className="text-2xl red" style={{color:'red'}}/> <br /> Youtube
-                <br /> Muskan Art
-              </a>
-            </div>
-            <div className="insta">
-              {" "}
-              <a href="https://www.instagram.com/muskan_arts_0/?hl=en">
-              <FontAwesomeIcon icon={faInstagram} className="text-2xl" /> <br /> Instagram
-                <br /> Muskan Art
-              </a>
-            </div>
-            <div className="telegram">
-              {" "}
-              <a href="#">
-                {" "}
-                <FontAwesomeIcon icon={faTelegram} className="text-2xl blue" style={{color:'blue'}}/> <br /> Telegram
-                <br /> Muskan Art
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Invitation section */}
-      <section className="flex justify-center">
-        <div className="flex flex-col bg-gray-200 w-1/2">
-          <div className="flex justify-center text-6xl font-bold p-16">You are invited</div>
-          <div className="invite-message">
-            "Stay up-to-date with monthly new art releases,
-            <br /> insightful artist profiles, and exclusive collections"
-          </div>
-          <div className="flex justify-center">
-            <input
-              type="text"
-              placeholder="Enter Your Email"
-              className="mail-input"
-            />
-            <button className="submitbtn" type="submit">
-              Submit
-            </button>
-          </div>
-        </div>
-      </section>
+      <Footer />
 
       {/* 1st footer section */}
       <hr />

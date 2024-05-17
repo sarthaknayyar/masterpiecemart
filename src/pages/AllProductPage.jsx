@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import { Await, Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 function ProductGrid() {
   const [products, setProducts] = useState([]);
@@ -43,7 +44,7 @@ function ProductGrid() {
   return (
     <>
     <Navbar />
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 bg-orange-50 mb-1">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 bg-orange-50 mb-40">
       {products.map(product => (
         <Link key={product.productId} className={`p-4 bg-gray-100 border-2 border-gray-200 hover:no-underline  text-black rounded-lg transition duration-300 ${
           hoveredProductId === product.productId ? 'shadow-xl' : 'shadow-md'
@@ -62,7 +63,9 @@ function ProductGrid() {
           
         </Link>
       ))}
-    </div></>
+    </div>
+    <Footer />
+    </>
   );
 }
 

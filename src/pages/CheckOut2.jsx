@@ -5,8 +5,13 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 
 function Cart() {
+    const location = useLocation();
+    const { state } = location;
+
   const [error, setError] = useState(null);
   const [products, setProducts] = useState([]);
   const [delStatus,setDelStatus] = useState(<span className="text-red-500">Free Delivery For Cart Value Above 1000</span>);
@@ -46,113 +51,9 @@ function Cart() {
 
 
 
-  const handleQuantityChange = async (productId) => {
-    // Find the product to update
-    const updatedProduct = products.find((product) => product.productId === productId);
-  
-    // Increment the quantity for the found product
-    const updatedProductWithIncrementedQuantity = { ...updatedProduct, quantity: updatedProduct.quantity + 1 };
-    const total = state.price;
-     if(total<=1000){
-      setDelStatus(<span className="text-red-500">Free Delivery For Cart Value Above 1000</span>)
-     }
-     else{
-      setDelStatus(<span className="text-green-500">Free Delivery Applied To This Order!</span>);
-     }
-  
-    // Update the product in the local state
-    setProducts((prevProducts) =>
-      prevProducts.map((product) =>
-        product.productId === productId ? updatedProductWithIncrementedQuantity : product
-      )
-    );
-
-    
-    try {
-      // Make an API call to update the product in the database
-      const response = await fetch(`http://localhost:8080/api/products/${productId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedProductWithIncrementedQuantity),
-      });
-      
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      } else {
-        console.log("Product quantity updated successfully.");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  
-  
-  
-  const handleQuantityChangeDec = async(productId) =>{
-   
 
 
-    const updatedProduct = products.find((product) => product.productId === productId);
-  
-    // Increment the quantity for the found product
-    const updatedProductWithIncrementedQuantity = { ...updatedProduct, quantity:Math.max(updatedProduct.quantity - 1,0) };
-  
-    // Update the product in the local state
-    setProducts((prevProducts) =>
-      prevProducts.map((product) =>
-        product.productId === productId ? updatedProductWithIncrementedQuantity : product
-      )
-    );
-
-
-    const total = products.reduce((acc, product) => {
-      if (product.productId === productId) {
-        return acc + product.price * (product.quantity - 1);
-      } else {
-        return acc + product.price * product.quantity;
-      }
-    }, 0);
-     if(total<=1000){
-      setDelStatus(<span className="text-red-500">Free Delivery For Cart Value Above 1000</span>)
-     }
-     else{
-      setDelStatus(<span className="text-green-500">Free Delivery Applied To This Order!</span>);
-     }
-  
-    try {
-      // Make an API call to update the product in the database
-      const response = await fetch(`http://localhost:8080/api/products/${productId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedProductWithIncrementedQuantity),
-      });
-  
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      } else {
-        console.log("Product quantity updated successfully.");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  
-
-
-    if(products.filter((product) => product.productId === productId)[0].quantity === 1){
-      setProducts((prevProducts) =>
-      prevProducts.filter((product) =>
-        product.productId !== productId
-      ) 
-    );
-    deleteProductIfQuantityZero(productId);
-}
-  }
-
-const delivery =products.reduce((acc, product) => acc + product.price * product.quantity, 0)>1000?0:70;
+const delivery =state.price>1000?0:70;
 
 if(delivery>1000){
   setDelStatus("Free Delivery Applied For This Order!");
@@ -357,16 +258,16 @@ if(delivery>1000){
 
       <div className="flex flex-col text-2xl justify-around gap-10">
         <div>
-          {products.reduce((acc, product) => acc + product.quantity, 0)}
+          1
         </div>
         <div>
-          Rs. {products.reduce((acc, product) => acc + product.price * product.quantity, 0)}
+          Rs. {state.price}
         </div>
         <div>
           Rs. {delivery}
         </div>
         <div>
-          Rs. {products.reduce((acc, product) => acc + product.price * product.quantity, delivery)}
+          Rs. {(state.price +  delivery)}
         </div>
       </div>
     </div>

@@ -36,10 +36,10 @@ function Blog() {
         </header>
 
         <div className="container mx-auto p-4 text-xl mt-4 bg-gray-200 rounded-md shadow-md">
-          <Link to="/api/posts">
+          <Link to="/api/posts" className="flex justify-center ">
             <button
               type="submit"
-              className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
+              className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 flex "
             >
               Create Post
             </button>
@@ -61,7 +61,7 @@ function Blog() {
             <Link
               key={post.id}
               to={`/api/posts/${post.id}`}
-              className="block hover:no-underline"
+              className="block hover:no-underline "
             >
               <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
                 <div className="h-52 overflow-hidden">

@@ -20,6 +20,8 @@ import PostDetail from './pages/PostDetail.jsx'
 import Login from './pages/Login.jsx'
 import SignUp from './pages/SignUp.jsx'
 import CheckOut from './pages/CheckOut.jsx'
+import CheckOut2 from './pages/CheckOut2.jsx'
+import Home from './pages/Home.jsx'
 
 
 function App() {
@@ -62,7 +64,7 @@ function App() {
         <Routes>
         {productsRoutes}
         <Route path='/Cart' element={<Cart />} />
-        <Route path='/' element={<AllProductPage />} />
+        <Route path='/AddProductPage' element={<AllProductPage />} />
         <Route path='/AddProduct' element={<AddProduct />} />
         <Route path="/Wishlist" element={<Wishist/>}></Route>
         <Route path='/Blog' element={<Blog />}></Route>
@@ -72,6 +74,8 @@ function App() {
         <Route path='/Login' element ={<Login />}></Route>
         <Route path='/SignUp' element ={<SignUp />}></Route>
         <Route path='/CheckOut' element ={<CheckOut />}></Route>
+        <Route path='/CheckOut2' element ={<CheckOut2 />}></Route>
+        <Route path='/' element ={<Home />}></Route>
         </Routes> 
       </div>
       

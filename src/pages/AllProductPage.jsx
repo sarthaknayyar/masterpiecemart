@@ -43,9 +43,9 @@ function ProductGrid() {
   return (
     <>
     <Navbar />
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 bg-orange-50 mb-1">
       {products.map(product => (
-        <Link key={product.productId} className={`p-4 bg-white border-2 border-gray-100 hover:no-underline  text-black rounded-lg transition duration-300 ${
+        <Link key={product.productId} className={`p-4 bg-red-50 border-2 border-gray-200 hover:no-underline  text-black rounded-lg transition duration-300 ${
           hoveredProductId === product.productId ? 'shadow-xl' : 'shadow-md'
         }`}
         onMouseEnter={() => handleMouseEnter(product.productId)}

@@ -101,55 +101,60 @@ function AddProduct() {
   return (
     <>
       <Navbar />
+      {/* <div className='p-2 h-full bg-cover bg-center ' style={{backgroundImage: "url('/bg1.jpg')"}}> */}
+
       <div 
       style={{
         transform: "scale(0.72)",
         transformOrigin: "0 0",
         width: "137%",
         height: "137%",
+        
       }}
-      className='p-4 m-2 h-screen '>
-        <div className='text-3xl text-black font-bold flex justify-center'>ADD PRODUCT</div>
+      className='p-2 h-full  '>
+        <div className='text-3xl text-black font-bold flex justify-center'>
+         <div className='p-2 rounded-xl'>ADD PRODUCT</div> 
+          </div>
         <div className='text-black flex justify-between items-center p-8 m-4'>
           <div className='text-black flex flex-col  w-1/2'>
-            <div className='flex flex-col bg-gray-100 p-4 my-4 items-center rounded-xl shadow-xl'>
+            <div className='flex flex-col bg-red-50 p-4 my-4 border-2 border-black items-center rounded-xl shadow-xl text-2xl'>
               <div className='text-2xl font-bold mb-8'> PRODUCT DESCRIPTION</div>
               <div className='flex gap-4 h-80'>
                 <div className='flex flex-col gap-8 justify-between'>
-                  <div className='text-lg h-24 flex items-center'>Product Name :</div>
-                  <div className='text-lg h-24 flex items-center'>Artist Name :</div>
-                  <div className='text-lg h-48 flex items-center'>Product Description :</div>
-                  <div className='text-lg h-24 flex items-center'>Product Id :</div>
-                  <div className='text-lg h-24 flex items-center'>Artist Id :</div>
+                  <div className=' h-24 flex items-center'>Product Name :</div>
+                  <div className='h-24 flex items-center'>Artist Name :</div>
+                  <div className=' h-48 flex items-center'>Product Description :</div>
+                  <div className=' h-24 flex items-center'>Product Id :</div>
+                  <div className='h-24 flex items-center'>Artist Id :</div>
                 </div>
                 <div className='flex flex-col gap-8 justify-between '>
-                  <input type="text" name="productName" value={formData.productName} onChange={handleInputChange} placeholder='Name of the product' className='w-96 h-12 rounded-lg border-black border'/>
-                  <input type="text" name="artistName" value={formData.artistName} onChange={handleInputChange} placeholder='Name of the artist' className='w-96 h-12 rounded-lg border '/>
-                  <input type="text" name="productDescription" value={formData.productDescription} onChange={handleInputChange} placeholder='Brief description of the product' className='w-96 h-24 rounded-lg text-wrap border'/>
-                  <input type="text" name="productId" value={formData.productId} onChange={handleInputChange} placeholder='Id of the product' className='w-96 h-12 rounded-lg border '/>
-                  <input type="text" name="artistId" value={formData.artistId} onChange={handleInputChange} placeholder='Id of the artist' className='w-96 h-12 rounded-lg border '/>
+                  <input type="text" name="productName" value={formData.productName} onChange={handleInputChange} placeholder='Name of the product' className='border-2 k w-96 h-12 rounded-lg border-black '/>
+                  <input type="text" name="artistName" value={formData.artistName} onChange={handleInputChange} placeholder='Name of the artist' className='w-96 h-12 rounded-lg border-2 border-black '/>
+                  <input type="text" name="productDescription" value={formData.productDescription} onChange={handleInputChange} placeholder='Brief description of the product' className='w-96 h-24 rounded-lg text-wrap border-2 border-black'/>
+                  <input type="text" name="productId" value={formData.productId} onChange={handleInputChange} placeholder='Id of the product' className='w-96 h-12 rounded-lg border-2 border-black'/>
+                  <input type="text" name="artistId" value={formData.artistId} onChange={handleInputChange} placeholder='Id of the artist' className='w-96 h-12 rounded-lg border-2 border-black '/>
                 </div>
               </div>
             </div>
-            <div className='flex flex-col bg-gray-100 p-4 my-4 items-center rounded-xl shadow-xl'>
+            <div className='flex flex-col bg-red-50 p-4 my-4 items-center rounded-xl shadow-xl border-2 border-black text-2xl'>
               <div className='text-2xl font-bold mb-8'> PRODUCT PRICE</div>
               <div className='flex gap-4 '>
-                <div className='flex flex-col text-xl justify-between h-28 '>
-                  <div className='text-lg h-12 flex items-center justify-between'>Price : </div>
+                <div className='flex flex-col text-2xl justify-between h-28 '>
+                  <div className=' h-12 flex items-center justify-between'>Price : </div>
                 </div>
                 <div className='flex flex-col justify-between '>
-                  <input type="text" name="price" value={formData.price} onChange={handleInputChange} placeholder='Price of the product' className='w-96 h-12 rounded-lg border'/>
+                  <input type="text" name="price" value={formData.price} onChange={handleInputChange} placeholder='Price of the product' className='w-96 h-12 rounded-lg border-2 border-black'/>
                 </div>
               </div>
             </div>
           </div>
-          <div className='flex flex-col bg-gray-100 p-4 my-4 h-96 items-center rounded-xl shadow-xl '>
+          <div className='flex flex-col bg-red-50 p-4 my-4 h-96 items-center rounded-xl shadow-xl border-2 border-black text-2xl'>
             <div className='text-2xl font-bold mb-8'> PRODUCT IMAGES</div>
             <div className='flex gap-4 h-96'>
-              <div className='flex flex-col text-xl justify-between h-68 '>
-                <div className='text-lg flex items-center justify-between w-32'>Cover Picture : </div>
-                <div className='text-lg flex items-center justify-between w-32'>Sub Image1 : </div>
-                <div className='text-lg flex items-center justify-between w-32'>Sub Image2 : </div>
+              <div className='flex flex-col justify-between h-68 '>
+                <div className='flex items-center justify-between w-40'>Cover Picture : </div>
+                <div className=' flex items-center justify-between w-40'>Sub Image1 : </div>
+                <div className='flex items-center justify-between w-40'>Sub Image2 : </div>
               </div>
               <div className='flex flex-col justify-between '>
                 <input name='productImage' type='file' onChange={handleInputChange} className="block w-full text-md text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" />
@@ -160,10 +165,11 @@ function AddProduct() {
           </div>
         </div>
         <div className='flex justify-center h-20'>
-          <button type="button" onClick={handleSubmit} className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-blue-300 font-medium rounded-2xl text-md px-5 py-2.5 text-center mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">SUBMIT</button>
+          <button type="button" onClick={handleSubmit} className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-blue-300 font-medium rounded-2xl text-2xl px-5 py-2.5 text-center mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">SUBMIT</button>
         </div>
         {message && <div className="flex justify-center text-xl font-bold text-red-500">{message}</div>}
       </div>
+      {/* </div> */}
     </>
   );
 }

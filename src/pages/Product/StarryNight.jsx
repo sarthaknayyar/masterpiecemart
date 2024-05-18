@@ -108,10 +108,10 @@ function ProductPage(props) {
         <Navbar />
         <div
           style={{
-            transform: "scale(0.80)",
+            transform: "scale(0.7)",
             transformOrigin: "0 0",
-            width: "125%",
-            height: "125%",
+            width: "150%",
+            height: "150%",
           }}
           className="product-mains flex"
         >

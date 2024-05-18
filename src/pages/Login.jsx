@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [name, setName] = useState("");
@@ -9,7 +10,7 @@ const Login = () => {
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
-
+  const navigateTo= useNavigate();
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
@@ -40,7 +41,8 @@ const Login = () => {
       // Optionally, reset the form after successful submission
       setName("");
       setPassword("");
-      console.log(data); // You can log data to see what the server returns
+      console.log(data);
+      navigateTo('/'); // You can log data to see what the server returns
     } catch (error) {
       setMessage(<span className='text-red-500'>Error signing in</span>);
       console.error(error);

@@ -76,9 +76,9 @@ function Footer() {
             </div>
             <div className="links">
               <Link to={"/FAQ"}>FAQ</Link>
-              <Link to={"/ContactUs"}>ContactUs</Link>
+              <Link to={"/ContactUs"}>Contact Us</Link>
               <a href="#">Returns</a>
-              <a href="#">About Us</a>
+              <Link to={"/AboutUs"}>About US</Link>
               <Link to="/Blog">Blog</Link>
               <a href="#">Team Wizard</a>
             </div>

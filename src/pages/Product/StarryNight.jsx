@@ -104,7 +104,7 @@ function ProductPage(props) {
 
   return (
     <>
-      <div className="">
+      <div className="flex flex-col">
         <Navbar />
         <div
           style={{
@@ -234,6 +234,14 @@ function ProductPage(props) {
             </div>
           </div>
         </div>
+        <div className="product-description">
+        <div className="desc-title">
+          <h2 className="u-heading u-heading--4">About this artwork</h2>
+        </div>
+        <div className="desc-text">
+          {props.productDescription}
+        </div>
+      </div>
           <Footer />
 
         

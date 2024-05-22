@@ -20,7 +20,7 @@ const Home = () => {
         <div className="flex flex-col justify-center gap-8">
           <div className="text-5xl font-bold">Good Art Changes Lives</div>
           <div className="flex justify-center">
-
+    
           <div className="w-96 text-2xl flex justify-center">
             Bring home your new art to view it in person. If a piece doesn't
             quite work in your space, return it within seven days of receiving

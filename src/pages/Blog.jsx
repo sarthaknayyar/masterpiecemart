@@ -13,9 +13,8 @@ function Blog() {
           `http://localhost:8080/api/posts${searchQuery ? `/search/${searchQuery}` : ""}`
         );
   
-        // Log the raw response for inspection
         const textResponse = await response.text();
-        console.log("Raw response:", textResponse);
+        // console.log("Raw response:", textResponse);
   
         // Attempt to parse the response as JSON
         const data = JSON.parse(textResponse);
